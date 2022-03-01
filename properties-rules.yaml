@@ -1,0 +1,14 @@
+rules:
+  - id: detected-github-token
+    languages:
+      - regex
+    message: The operator 'is' is for reference equality, not value equality! Use `==` instead!
+    pattern-either:
+      - pattern-regex: gh[pousr]_[A-Za-z0-9_]{36,251}
+      - pattern-regex: username
+      - pattern-regex: password
+    severity: ERROR
+    paths:
+      exclude:
+        - "mvnw" 
+        - "properties-rules.yaml" 
